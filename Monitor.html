@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Study Timer</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        .app {
+            background-color: #1c1c1e;
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
+        h1 {
+            margin-top: 0;
+            font-size: 18px;
+            color: #8e8e93;
+        }
+        h2 {
+            font-size: 24px;
+            margin-bottom: 5px;
+        }
+        .timer {
+            font-size: 36px;
+            color: #8ce724;
+            margin-bottom: 20px;
+        }
+        .progress {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: conic-gradient(#8ce724 0deg, #2c2c2e 0deg);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto;
+        }
+        .progress-inner {
+            width: 80px;
+            height: 80px;
+            background-color: #1c1c1e;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        button {
+            background-color: #3a3a3c;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="app">
+        <h1>HABITS</h1>
+        <h2>Daily Writing</h2>
+        <div class="timer">10m left</div>
+        <div class="progress">
+            <div class="progress-inner">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M4 20H20L12 4L4 20Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </div>
+        </div>
+        <button id="startStop">Start</button>
+    </div>
+
+    <script>
+        let timer;
+        let timeLeft = 600; // 10 minutes in seconds
+        let isRunning = false;
+
+        const timerDisplay = document.querySelector('.timer');
+        const progressBar = document.querySelector('.progress');
+        const startStopButton = document.getElementById('startStop');
+
+        function updateTimer() {
+            const minutes = Math.floor(timeLeft / 60);
+            const seconds = timeLeft % 60;
+            timerDisplay.textContent = `${minutes}m ${seconds.toString().padStart(2, '0')}s left`;
+
+            const progress = (600 - timeLeft) / 6; // 600 seconds total, divided by 6 to get percentage
+            progressBar.style.background = `conic-gradient(#8ce724 ${progress}deg, #2c2c2e 0deg)`;
+
+            if (timeLeft === 0) {
+                clearInterval(timer);
+                isRunning = false;
+                startStopButton.textContent = 'Start';
+            }
+        }
+
+        function startStopTimer() {
+            if (isRunning) {
+                clearInterval(timer);
+                isRunning = false;
+                startStopButton.textContent = 'Start';
+            } else {
+                timer = setInterval(() => {
+                    if (timeLeft > 0) {
+                        timeLeft--;
+                        updateTimer();
+                    }
+                }, 1000);
+                isRunning = true;
+                startStopButton.textContent = 'Stop';
+            }
+        }
+
+        startStopButton.addEventListener('click', startStopTimer);
+        updateTimer(); // Initial display
+    </script>
+</body>
+</html>
