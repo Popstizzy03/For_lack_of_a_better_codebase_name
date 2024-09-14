@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Productivity App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #1c1c1e;
+            color: #ffffff;
+        }
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .widget {
+            background-color: #2c2c2e;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+        }
+        .timer-widget {
+            width: 300px;
+        }
+        .todo-widget, .notes-widget {
+            width: 300px;
+        }
+        .calendar-widget {
+            width: 300px;
+        }
+        h2 {
+            margin-top: 0;
+            color: #8e8e93;
+        }
+        .timer {
+            text-align: center;
+        }
+        .progress {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: conic-gradient(#8ce724 0deg, #3a3a3c 0deg);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto;
+        }
+        .progress-inner {
+            width: 130px;
+            height: 130px;
+            background-color: #2c2c2e;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+        }
+        select, input, button, textarea {
+            margin: 5px 0;
+            padding: 5px;
+            background-color: #3a3a3c;
+            border: none;
+            color: #ffffff;
+            border-radius: 5px;
+        }
+        button {
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #515154;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            margin-bottom: 5px;
+            background-color: #3a3a3c;
+            padding: 5px;
+            border-radius: 5px;
+        }
+        .delete-btn {
+            float: right;
+            color: #ff453a;
+            cursor: pointer;
+        }
+        #calendar {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 5px;
+        }
+        .calendar-day {
+            text-align: center;
+            padding: 5px;
+            background-color: #3a3a3c;
+            border-radius: 5px;
+        }
+        .calendar-day.current {
+            background-color: #8ce724;
+            color: #1c1c1e;
+        }
+        .notes-list {
+            max-height: 200px;
+            overflow-y: auto;
+        }
+        .note-item {
+            background-color: #3a3a3c;
+            margin-bottom: 5px;
+            padding: 5px;
+            border-radius: 5px;
+        }
+        .edit-note {
+            background-color: #515154;
+            border: none;
+            color: #ffffff;
+            padding: 2px 5px;
+            margin-left: 5px;
+            cursor: pointer;
+            border-radius: 3px;
+        }
+        @keyframes checkmark {
+            0% { transform: scale(0); }
+            100% { transform: scale(1); }
+        }
+        .checkmark {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: block;
+            stroke-width: 2;
+            stroke: #8ce724;
+            stroke-miterlimit: 10;
+            box-shadow: inset 0px 0px 0px #8ce724;
+            animation: checkmark 0.3s ease-in-out forwards;
+            display: none;
+        }
+        .checkmark_circle {
+            stroke-dasharray: 166;
+            stroke-dashoffset: 166;
+            stroke-width: 2;
+            stroke-miterlimit: 10;
+            stroke: #8ce724;
+            fill: none;
+            animation: stroke 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards;
+        }
+        .checkmark_check {
+            transform-origin: 50% 50%;
+            stroke-dasharray: 48;
+            stroke-dashoffset: 48;
+            animation: stroke 0.3s cubic-bezier(0.65, 0, 0.45, 1) 0.8s forwards;
+        }
+        @keyframes stroke {
+            100% { stroke-dashoffset: 0; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="widget timer-widget">
+            <h2>HABITS</h2>
+            <div class="timer">
+                <div class="progress">
+                    <div class="progress-inner" id="timerDisplay">25:00</div>
+                    <svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
+                        <circle class="checkmark_circle" cx="26" cy="26" r="25" fill="none"/>
+                        <path class="checkmark_check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
+                    </svg>
+                </div>
+                <select id="activityType">
+                    <option value="study">Study</option>
+                    <option value="meditation">Meditation</option>
+                    <option value="break">Break</option>
+                    <option value="exercise">Exercise</option>
+                </select>
+                <input type="number" id="timerDuration" min="1" max="120" value="25">
+                <button id="startStopBtn">Start</button>
+            </div>
+        </div>
+
+        <div class="widget todo-widget">
+            <h2>To-Do List</h2>
+            <input type="date" id="todoDate">
+            <input type="text" id="todoInput" placeholder="Add a new task">
+            <button id="addTodoBtn">Add</button>
+            <ul id="todoList"></ul>
+        </div>
+
+        <div class="widget notes-widget">
+            <h2>Notes</h2>
+            <textarea id="noteInput" rows="3" cols="30" placeholder="Enter a new note"></textarea>
+            <button id="addNoteBtn">Add Note</button>
+            <div class="notes-list" id="notesList"></div>
+        </div>
+
+        <div class="widget calendar-widget">
+            <h2>Calendar</h2>
+            <div id="calendar"></div>
+        </div>
+    </div>
+
+    <script>
+        // Timer functionality
+        let timer;
+        let timeLeft = 1500; // 25 minutes in seconds
+        let isRunning = false;
+        const timerDisplay = document.getElementById('timerDisplay');
+        const progressBar = document.querySelector('.progress');
+        const startStopBtn = document.getElementById('startStopBtn');
+        const activityType = document.getElementById('activityType');
+        const timerDuration = document.getElementById('timerDuration');
+        const checkmark = document.querySelector('.checkmark');
+
+        function updateTimer() {
+            const minutes = Math.floor(timeLeft / 60);
+            const seconds = timeLeft % 60;
+            timerDisplay.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+
+            const totalTime = timerDuration.value * 60;
+            const progress = ((totalTime - timeLeft) / totalTime) * 360;
+            const color = getActivityColor(activityType.value);
+            progressBar.style.background = `conic-gradient(${color} ${progress}deg, #3a3a3c 0deg)`;
+
+            if (timeLeft === 0) {
+                clearInterval(timer);
+                isRunning = false;
+                startStopBtn.textContent = 'Start';
+                showCheckmark();
+            }
+        }
+
+        function getActivityColor(activity) {
+            const colors = {
+                study: '#8ce724',
+                meditation: '#5e5ce6',
+                break: '#ff9f0a',
+                exercise: '#ff453a'
+            };
+            return colors[activity] || '#8ce724';
+        }
+
+        function startStopTimer() {
+            if (isRunning) {
+                clearInterval(timer);
+                isRunning = false;
+                startStopBtn.textContent = 'Start';
+            } else {
+                timeLeft = timerDuration.value * 60;
+                timer = setInterval(() => {
+                    if (timeLeft > 0) {
+                        timeLeft--;
+                        updateTimer();
+                    }
+                }, 1000);
+                isRunning = true;
+                startStopBtn.textContent = 'Stop';
+                hideCheckmark();
+            }
+        }
+
+        function showCheckmark() {
+            timerDisplay.style.display = 'none';
+            checkmark.style.display = 'block';
+            setTimeout(() => {
+                timerDisplay.style.display = 'block';
+                checkmark.style.display = 'none';
+            }, 2000);
+        }
+
+        function hideCheckmark() {
+            timerDisplay.style.display = 'block';
+            checkmark.style.display = 'none';
+        }
+
+        startStopBtn.addEventListener('click', startStopTimer);
+        activityType.addEventListener('change', updateTimer);
+        timerDuration.addEventListener('change', () => {
+            timeLeft = timerDuration.value * 60;
+            updateTimer();
+        });
+
+        // To-Do List functionality
+        const todoInput = document.getElementById('todoInput');
+        const todoDate = document.getElementById('todoDate');
+        const addTodoBtn = document.getElementById('addTodoBtn');
+        const todoList = document.getElementById('todoList');
+
+        function addTodo() {
+            const todoText = todoInput.value.trim();
+            const date = todoDate.value;
+            if (todoText && date) {
+                const li = document.createElement('li');
+                li.innerHTML = `${date}: ${todoText} <span class="delete-btn">&times;</span>`;
+                todoList.appendChild(li);
+                todoInput.value = '';
+                saveTodos();
+            }
+        }
+
+        function deleteTodo(e) {
+            if (e.target.classList.contains('delete-btn')) {
+                e.target.parentElement.remove();
+                saveTodos();
+            }
+        }
+
+        function saveTodos() {
+            const todos = Array.from(todoList.children).map(li => li.textContent.replace('×', '').trim());
+            localStorage.setItem('todos', JSON.stringify(todos));
+        }
+
+        function loadTodos() {
+            const todos = JSON.parse(localStorage.getItem('todos')) || [];
+            todos.forEach(todo => {
+                const li = document.createElement('li');
+                li.innerHTML = `${todo} <span class="delete-btn">&times;</span>`;
+                todoList.appendChild(li);
+            });
+        }
+
+        addTodoBtn.addEventListener('click', addTodo);
+        todoList.addEventListener('click', deleteTodo);
+        loadTodos();
+
+        // Notes functionality
+        const noteInput = document.getElementById('noteInput');
+        const addNoteBtn = document.getElementById('addNoteBtn');
+        const notesList = document.getElementById('notesList');
+
+        function addNote() {
+            const noteText = noteInput.value.trim();
+            if (noteText) {
+                const noteItem = document.createElement('div');
+                noteItem.classList.add('note-item');
+                noteItem.innerHTML = `
+                    <span>${noteText}</span>
+                    <button class="edit-note">Edit</button>
+                    <span class="delete-btn">&times;</span>
+                `;
+                notesList.appendChild(noteItem);
+                noteInput.value = '';
+                saveNotes();
+            }
+        }
+
+        function editNote(e) {
+            if (e.target.classList.contains('edit-note')) {
+                const noteItem = e.target.parentElement;
+                const noteText = noteItem.querySelector('span').textContent;
+                noteInput.value = noteText;
+                noteItem.remove();
+                saveNotes();
+            }
+        }
+
+        function deleteNote(e) {
+            if (e.target.classList.contains('delete-btn')) {
+                e.target.parentElement.remove();
+                saveNotes();
+            }
+        }
+
+        function saveNotes() {
+            const notes = Array.from(notesList.children).map(note => note.querySelector('span').textContent);
+            localStorage.setItem('notes', JSON.stringify(notes));
+        }
+
+        function loadNotes() {
+            const notes = JSON.parse(localStorage.getItem('notes')) || [];
+            notes.forEach(note => {
+                const noteItem = document.createElement('div');
+                noteItem.classList.add('note-item');
+                noteItem.innerHTML = `
+                    <span>${note}</span>
+                    <button class="edit-note">Edit</button>
+                    <span class="delete-btn">&times;</span>
+                `;
+                notesList.appendChild(noteItem);
+            });
+        }
+
+        addNoteBtn.addEventListener('click', addNote);
+        notesList.addEventListener('click', editNote);
+        notesList.addEventListener('click', deleteNote);
+        loadNotes();
+
+        // Calendar functionality
+        const calendar = document.getElementById('calendar');
+
+        function createCalendar() {
+            const date = new Date();
+            const year = date.getFullYear();
+            const month = date.getMonth();
+            const today = date.getDate();
+            const firstDay = new Date(year, month, 1).getDay();
+            const daysInMonth = new Date(year, month + 1, 0).getDate();
+
+            for (let i = 0; i < firstDay; i++) {
+                calendar.appendChild(document.createElement('div'));
+            }
+
+            for (let i = 1; i <= daysInMonth; i++) {
+                const day = document.createElement('div');
+                day.classList.add('calendar-day');
+                if (i === today) {
+                    day.classList.add('current');
+                }
+                day.textContent = i;
+                calendar.appendChild(day);
+            }
+        }
+
+        createCalendar();
+
+        // Initial update
+        updateTimer();
+    </script>
+</body>
+                      </html>
