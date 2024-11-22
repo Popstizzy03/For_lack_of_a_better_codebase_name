@@ -1,0 +1,2043 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Deaujo Jewellery</title>
+    <link rel="shortcut icon" href="images/icon.png" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+        integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <style>
+        :root {
+            --primary-color: #c9a55a;
+            --secondary-color: #e4c9b6;
+            --tertiary-color: #d7a49a;
+            --small-buttons-color: #d2d9e2;
+            --small-buttons-hover: #8f8e8e;
+            --background-color: #ffffff;
+            --popup-glass-bg: rgba(255, 255, 255, 0.95);
+            --box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            --footer-background: #1c1c1c;
+            --footer-text: #ffffff;
+            --black-text: #000000;
+            --popup-glass-blur: 10px;
+            --border-radius: 10px;
+            --card-padding: 20px;
+            --transition-speed: 0.3s;
+            --font-family: "Cormorant Garamond", serif;
+            --complementary-font: "Spectral", serif;
+        }
+
+        body {
+            font-family: var(--font-family);
+            background-color: var(--background-color);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 2000px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid grey;
+            padding: 15px 20px;
+            backdrop-filter: blur(var(--popup-glass-blur));
+            background-color: rgba(255, 255, 255, 0.4);
+            box-shadow: var(--box-shadow);
+            z-index: 1000;
+        }
+
+        .header-fix {
+            position: fixed;
+            box-shadow: 2px 2px 40px rgba(0, 0, 0, 0.05);
+            animation: animationonnav 0.6s;
+        }
+
+        @keyframes animationonnav {
+            0% {
+                top: -100%;
+            }
+
+            100% {
+                top: 0%;
+            }
+        }
+
+        .logo {
+            height: 50px;
+            width: auto;
+            cursor: pointer;
+        }
+
+        .icons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .icon-button {
+            background-color: var(--small-buttons-color);
+            color: #333;
+            border: 1px solid var(--footer-background);
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: background-color var(--transition-speed);
+        }
+
+        .icon-button:hover {
+            background-color: var(--small-buttons-hover);
+        }
+
+        main {
+            margin-top: 100px;
+            padding: 0;
+        }
+
+        /* ============HERO============== */
+        .hero {
+            background-image: url("./images/wave.png");
+            color: #fff;
+            background-size: cover;
+            background-position: center;
+            height: 80vh;
+            display: flex;
+            border: 2px solid #000000;
+            flex-direction: column;
+            justify-content: center;
+            border-radius: var(--border-radius);
+            align-items: center;
+            text-align: center;
+            /* padding: 2rem;*/
+            margin-top: 0px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: bolder;
+            margin-bottom: 12px;
+            font-family: var(--font-family);
+        }
+
+        .hero p {
+            font-size: 1.6rem;
+            max-width: 600px;
+            margin-bottom: 2rem;
+        }
+
+        .cta-button {
+            background-color: var(--primary-color);
+            color: var(--black-text);
+            padding: 0.8rem 2rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.3s ease;
+            margin-top: 20px;
+        }
+
+        .cta-button:hover {
+            background-color: var(--secondary-color);
+        }
+
+        .nav-popup {
+            position: fixed;
+            top: 80px;
+            right: 20px;
+            width: 200px;
+            background-color: rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(var(--popup-glass-blur));
+            border: 1px solid var(--footer-background);
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            display: none;
+            margin-top: 10px;
+            padding: 10px;
+            z-index: 999;
+        }
+
+        .nav-popup.show {
+            display: block;
+        }
+
+        .nav-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .nav-list li {
+            margin: 0;
+            border-bottom: 1px solid var(--footer-background);
+        }
+
+        .nav-list li:last-child {
+            border-bottom: none;
+        }
+
+        .nav-list a {
+            text-decoration: none;
+            font-size: 16px;
+            color: #333;
+            padding: 10px 20px;
+            display: block;
+            transition: background-color var(--transition-speed);
+        }
+
+        .nav-list a:hover {
+            background-color: var(--small-buttons-hover);
+            border-radius: var(--border-radius);
+            color: white;
+        }
+
+        #shop {
+            padding: 50px 0;
+        }
+
+        .category-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .category-button {
+            background-color: var(--small-buttons-color);
+            border: none;
+            padding: 10px 20px;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            transition: background-color var(--transition-speed);
+            font-family: "Poppins", serif;
+            font-weight: 400;
+            font-style: normal;
+        }
+
+        .category-button:hover,
+        .category-button.active {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .gender-filter {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .gender-button {
+            background-color: var(--small-buttons-color);
+            border: none;
+            padding: 10px 20px;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            transition: background-color var(--transition-speed);
+            font-family: "Poppins", serif;
+            font-weight: 400;
+            font-style: normal;
+        }
+
+        .gender-button:hover,
+        .gender-button.active {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .carousel {
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 40px;
+        }
+
+        .carousel-container {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+
+        .product-card {
+            flex: 0 0 300px;
+            margin-right: 20px;
+            background-color: white;
+            border: 1px solid var(--secondary-color);
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            overflow: hidden;
+        }
+
+        .product-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .product-info {
+            padding: 15px;
+        }
+
+        .product-name {
+            font-size: 20px;
+            margin-bottom: 5px;
+            font-weight: bolder;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .product-price {
+            font-family: "Poppins", serif;
+            font-weight: 600;
+            font-style: normal;
+            color: var(--black-text);
+        }
+
+        .product-material {
+            font-size: 15px;
+            color: #666;
+        }
+
+        .view-button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: var(--primary-color);
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            border: none;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            transition: background-color var(--transition-speed);
+        }
+
+        .view-button:hover {
+            background-color: var(--secondary-color);
+        }
+
+        .carousel-controls {
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .carousel-control {
+            background-color: var(--small-buttons-color);
+            border: 1px solid #000000;
+            padding: 10px 15px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: background-color var(--transition-speed);
+        }
+
+        .carousel-control:hover {
+            background-color: var(--small-buttons-hover);
+            color: white;
+        }
+
+        .carousel-pagination {
+            display: flex;
+            justify-content: center;
+            gap: 5px;
+            margin-top: 10px;
+        }
+
+        .pagination-dot {
+            width: 10px;
+            height: 10px;
+            background-color: var(--small-buttons-color);
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        .pagination-dot.active {
+            background-color: var(--primary-color);
+        }
+
+        .product-popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 40px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            z-index: 1001;
+        }
+
+        .product-popup-content img {
+            width: 200px;
+            height: 200px;
+            border-radius: var(--border-radius);
+            border: 1px solid #000000;
+        }
+
+        .product-popup-content {
+            max-width: 500px;
+        }
+
+        .close-popup {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        footer {
+            margin-top: auto;
+            background-color: var(--footer-background);
+            color: var(--footer-text);
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                height: 55vh;
+                padding: 3rem;
+            }
+
+            .category-buttons {
+                flex-direction: column;
+            }
+
+            /* the cell */
+            .category-button {
+                align-items: center;
+                text-align: center;
+                flex-direction: column;
+                justify-content: center;
+            }
+
+            .cssbuttons-io-button {
+                margin-left: 10%;
+            }
+        }
+
+        /* ============== The CheckPoint ================*/
+        .popup {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+        }
+
+        .popup-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: var(--popup-glass-bg);
+            padding: 10rem;
+            border-radius: var(--border-radius);
+            max-width: 100%;
+            max-height: 100%;
+            overflow-y: auto;
+            backdrop-filter: blur(var(--popup-glass-blur));
+        }
+
+        .popup-content img {
+            width: 120px;
+            height: 120px;
+            border-radius: var(--border-radius);
+            margin: 5px;
+        }
+
+        .popup-content video {
+            width: 120px;
+            height: 120px;
+            border-radius: var(--border-radius);
+        }
+
+        .close-popup {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .product-popup-content {
+            display: flex;
+            flex-direction: column;
+        }
+
+        @media (min-width: 768px) {
+            .hero {
+                height: 95vh;
+            }
+            .product-popup-content {
+                flex-direction: row;
+            }
+
+            .cssbuttons-io-button {
+                margin-left: 10%;
+            }
+        }
+
+        .product-carousel {
+            flex: 1;
+            margin-right: 2rem;
+        }
+
+        .product-info {
+            flex: 1;
+        }
+
+        .product-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .quantity-control {
+            display: flex;
+            align-items: center;
+            margin-top: 1rem;
+        }
+
+        .quantity-btn {
+            background-color: var(--small-buttons-color);
+            border: none;
+            padding: 0.5rem;
+            cursor: pointer;
+        }
+
+        .quantity-input {
+            width: 40px;
+            text-align: center;
+            margin: 0 0.5rem;
+        }
+
+        .cart-popup {
+            display: none;
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 300px;
+            height: 100%;
+            background-color: var(--popup-glass-bg);
+            backdrop-filter: blur(var(--popup-glass-blur));
+            z-index: 1000;
+            padding: 2rem;
+            overflow-y: auto;
+        }
+
+        .cart-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .cart-item-image {
+            width: 50px;
+            height: 50px;
+            object-fit: cover;
+            margin-right: 1rem;
+        }
+
+        .cart-item-info {
+            flex: 1;
+        }
+
+        .remove-item {
+            background: none;
+            border: none;
+            color: red;
+            cursor: pointer;
+        }
+
+        #checkout-btn {
+            display: block;
+            width: 100%;
+            padding: 1rem;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            margin-top: 1rem;
+        }
+
+        @media (max-width: 768px) {
+            .filter-section {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .category-button,
+            .gender-button {
+                width: 100%;
+            }
+        }
+
+        /* Articles section styles */
+        .articles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .article-card {
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .article-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .article-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .article-content {
+            padding: 1.5rem;
+        }
+
+        .article-content h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+            color: #333;
+        }
+
+        .article-content p {
+            margin-bottom: 1rem;
+            color: #666;
+        }
+
+        .read-more {
+            color: #c9a55a;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        .read-more:hover {
+            color: #b8944e;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+
+            .about-content,
+            .contact-content {
+                flex-direction: column;
+            }
+
+            .about-image,
+            .about-text,
+            .contact-info,
+            .contact-form {
+                width: 100%;
+                margin-right: 0;
+                margin-bottom: 2rem;
+            }
+
+            .articles-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        footer {
+            background-color: #333;
+            color: #fff;
+            padding: 2rem;
+            text-align: center;
+            margin-top: 15px;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-section {
+            flex: 1;
+            min-width: 200px;
+            margin-bottom: 1rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 0.5rem;
+            color: #c9a55a;
+        }
+
+        .footer-section ul {
+            list-style-type: none;
+        }
+
+        .footer-section li {
+            margin-bottom: 0.25rem;
+        }
+
+        .footer-section a {
+            color: #fff;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: #c9a55a;
+        }
+
+        .social-icons {
+            margin-top: 1rem;
+        }
+
+        .social-icons a {
+            color: #fff;
+            font-size: 1.5rem;
+            margin: 0 0.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            color: #c9a55a;
+        }
+
+        .about-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .about-image {
+            flex: 1;
+            min-width: 300px;
+            max-width: 500px;
+            margin-right: 2rem;
+        }
+
+        .about-image img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .about-text {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .about-text h3 {
+            font-size: 1.5rem;
+            margin-top: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: #c9a55a;
+        }
+
+        .about-text p {
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        /*=============RATING============*/
+        #clients {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: #f6f6f656;
+            padding: 60px 0px;
+            margin: 40px auto;
+            border-top: 1px solid #f3f3f3;
+            border-bottom: 1px solid #f3f3f3;
+        }
+
+        .client-heading {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .client-heading h3 {
+            font-size: 1.8rem;
+            color: #202020;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            text-align: center;
+            padding: 0px 5px;
+        }
+
+        .client-heading p {
+            color: #969696;
+            font-size: 0.8rem;
+        }
+
+        .client-box-container {
+            grid-gap: 20px;
+            width: 90%;
+            margin-top: 40px;
+        }
+
+        .client-box {
+            background-color: #fff;
+            padding: 30px 20px;
+            border: 1px solid #f1f1f1;
+            border-radius: 0px 30px 0px 30px;
+        }
+
+        .client-profile {
+            display: flex;
+            align-items: center;
+        }
+
+        .client-profile img {
+            width: 40px;
+            height: 40px;
+            object-fit: cover;
+            object-position: center;
+            border-radius: 50%;
+        }
+
+        .profile-text {
+            display: flex;
+            flex-direction: column;
+            margin-left: 10px;
+        }
+
+        .profile-text strong {
+            color: #393939;
+            font-size: 1rem;
+            font-weight: 600;
+        }
+
+        .profile-text span {
+            color: #949494;
+            font-weight: 400;
+            font-size: 0.8rem;
+        }
+
+        .rating {
+            display: flex;
+            margin: 10px 0px;
+        }
+
+        .rating i {
+            color: var(--main-color);
+        }
+
+        .rating p {
+            color: #7c7c7c;
+            font-size: 0.9rem;
+        }
+
+        .client-box p {
+            color: #7c7c7c;
+            font-size: 0.9rem;
+        }
+
+        .section-title,
+        .container h2,
+        .container p {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* From Uiverse.io by adamgiebl */
+        .cssbuttons-io-button {
+            background: var(--primary-color);
+            color: white;
+            font-family: inherit;
+            padding: 0.35em;
+            padding-left: 1.2em;
+            font-size: 17px;
+            font-weight: 500;
+            border-radius: 0.9em;
+            border: none;
+            letter-spacing: 0.05em;
+            display: flex;
+            align-items: center;
+            box-shadow: inset 0 0 1.6em -0.6em var(--primary-color);
+            overflow: hidden;
+            position: relative;
+            height: 2.8em;
+            padding-right: 3.3em;
+            cursor: pointer;
+            font-family: "Poppins", serif;
+            font-weight: 600;
+            font-style: normal;
+            margin-left: 43%;
+        }
+
+        .cssbuttons-io-button .icon {
+            background: white;
+            margin-left: 1em;
+            position: absolute;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 2.2em;
+            width: 2.2em;
+            border-radius: 0.7em;
+            box-shadow: 0.1em 0.1em 0.6em 0.2em var(--primary-color);
+            right: 0.3em;
+            transition: all 0.3s;
+        }
+
+        .cssbuttons-io-button:hover .icon {
+            width: calc(100% - 0.6em);
+        }
+
+        .cssbuttons-io-button .icon svg {
+            width: 1.1em;
+            transition: transform 0.3s;
+            color: var(--primary-color);
+        }
+
+        .cssbuttons-io-button:hover .icon svg {
+            transform: translateX(0.1em);
+        }
+
+        .cssbuttons-io-button:active .icon {
+            transform: scale(0.95);
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header">
+        <img src="./images/header.png" alt="Deaujo Jewellery Logo" class="logo" />
+
+        <div class="icons">
+            <button id="cart-btn" class="icon-button">
+                <i class="fas fa-shopping-cart"></i>
+            </button>
+
+            <button id="hamburger" class="icon-button">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <nav id="popup-menu" class="nav-popup">
+        <ul class="nav-list">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#shop">Shop</a></li>
+            <li><a href="#catalogue">Catalogue</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#clients">Reviews</a></li>
+            <li><a href="#articles">Articles</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <div class="container">
+            <section class="hero" id="home">
+                <h1>Discover Timeless Elegance</h1>
+                <h3>
+                    Explore our exquisite collection of fine jewelry, crafted with
+                    passion and precision.
+                </h3>
+                <a href="#shop" class="cta-button">Shop Now</a>
+            </section>
+
+            <section id="shop">
+                <div class="container">
+                    <h2>Shop Our Collections</h2>
+                    <div class="category-buttons">
+                        <button class="category-button" data-category="all">All</button>
+                        <button class="category-button" data-category="watches">
+                            Watches
+                        </button>
+                        <button class="category-button" data-category="wedding-dresses">
+                            Wedding Dresses
+                        </button>
+                        <button class="category-button" data-category="rings">
+                            Rings
+                        </button>
+                        <button class="category-button" data-category="necklaces">
+                            Necklaces
+                        </button>
+                    </div>
+                    <div class="gender-filter">
+                        <button class="gender-button" data-gender="all">All</button>
+                        <button class="gender-button" data-gender="male">Male</button>
+                        <button class="gender-button" data-gender="female">Female</button>
+                    </div>
+                    <div class="carousel" id="main-carousel">
+                        <div class="carousel-container">
+                            <!-- Product cards will be dynamically added here -->
+                        </div>
+                        <div class="carousel-controls">
+                            <button class="carousel-control prev-btn">
+                                <i class="fas fa-chevron-left"></i>
+                            </button>
+                            <button class="carousel-control next-btn">
+                                <i class="fas fa-chevron-right"></i>
+                            </button>
+                        </div>
+                        <div class="carousel-pagination">
+                            <!-- Pagination dots will be dynamically added here -->
+                        </div>
+                    </div>
+                    <div class="carousel" id="second-carousel">
+                        <div class="carousel-container">
+                            <!-- Product cards will be dynamically added here -->
+                        </div>
+                        <div class="carousel-controls">
+                            <button class="carousel-control prev-btn">
+                                <i class="fas fa-chevron-left"></i>
+                            </button>
+                            <button class="carousel-control next-btn">
+                                <i class="fas fa-chevron-right"></i>
+                            </button>
+                        </div>
+                        <div class="carousel-pagination">
+                            <!-- Pagination dots will be dynamically added here -->
+                        </div>
+                    </div>
+                    <div class="carousel" id="third-carousel">
+                        <div class="carousel-container">
+                            <!-- Product cards will be dynamically added here -->
+                        </div>
+                        <div class="carousel-controls">
+                            <button class="carousel-control prev-btn">
+                                <i class="fas fa-chevron-left"></i>
+                            </button>
+                            <button class="carousel-control next-btn">
+                                <i class="fas fa-chevron-right"></i>
+                            </button>
+                        </div>
+                        <div class="carousel-pagination">
+                            <!-- Pagination dots will be dynamically added here -->
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="catalogue">
+                <h2>Catalogue Section</h2>
+                <p>Browse our latest designs and timeless classics.</p>
+                <button class="cssbuttons-io-button">
+                    Catalogue
+                    <div class="icon">
+                        <a href="car3t.html"><svg height="24" width="24" viewBox="0 0 24 24"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path d="M0 0h24v24H0z" fill="none"></path>
+                                <path
+                                    d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z"
+                                    fill="currentColor"></path>
+                            </svg></a>
+                    </div>
+                </button>
+            </section>
+            <section id="about" class="section-container">
+                <h2 class="section-title">About Deaujo Jewellery</h2>
+                <div class="about-content">
+                    <div class="about-image">
+                        <img src="images/005.png" alt="Deaujo Jewellery workshop" loading="lazy" />
+                    </div>
+                    <div class="about-text">
+                        <h3>Our Story</h3>
+                        <p>
+                            Founded in 2005, Deaujo Jewellery has been crafting exquisite
+                            pieces that blend traditional artisanship with modern design.
+                            Our journey began in a small workshop in Lusaka, Zambia, fueled
+                            by a passion for creating timeless beauty.
+                        </p>
+                        <h3>Our Commitment</h3>
+                        <p>
+                            At Deaujo, we are committed to ethical sourcing and sustainable
+                            practices. Each piece is crafted with care, using responsibly
+                            sourced materials and supporting local artisans.
+                        </p>
+                        <h3>Our Promise</h3>
+                        <p>
+                            We promise to deliver not just jewelry, but wearable art that
+                            tells a story. Every Deaujo piece is a testament to quality,
+                            creativity, and the enduring allure of fine craftsmanship.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="clients">
+                <div class="client-heading">
+                    <h3>Testimonials</h3>
+                    <p>From Our Customers</p>
+                </div>
+
+                <div class="client-box-container">
+                    <div class="swiper mySwiperTestimonials">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide">
+                                <div class="client-box">
+                                    <div class="client-profile">
+                                        <img src="images/001.png" alt="client" />
+                                        <div class="profile-text">
+                                            <strong>Joseph Sichula</strong>
+                                            <span>Client</span>
+                                        </div>
+                                    </div>
+                                    <div class="rating">
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                    </div>
+                                    <p>
+                                        Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                                        Ipsum eveniet in odio facere vero. Ratione nulla et facilis
+                                        quod maiores quia tenetur dolorem! Voluptatum nulla ea magnam
+                                        natus voluptas inventore.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="swiper-slide">
+                                <div class="client-box">
+                                    <div class="client-profile">
+                                        <img src="images/001.png" alt="client" />
+                                        <div class="profile-text">
+                                            <strong>Joseph Sichula</strong>
+                                            <span>Client</span>
+                                        </div>
+                                    </div>
+                                    <div class="rating">
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                    </div>
+                                    <p>
+                                        Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                                        Ipsum eveniet in odio facere vero. Ratione nulla et facilis
+                                        quod maiores quia tenetur dolorem! Voluptatum nulla ea magnam
+                                        natus voluptas inventore.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="swiper-slide">
+                                <div class="client-box">
+                                    <div class="client-profile">
+                                        <img src="images/001.png" alt="client" />
+                                        <div class="profile-text">
+                                            <strong>Joseph Sichula</strong>
+                                            <span>Client</span>
+                                        </div>
+                                    </div>
+                                    <div class="rating">
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                    </div>
+                                    <p>
+                                        Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                                        Ipsum eveniet in odio facere vero. Ratione nulla et facilis
+                                        quod maiores quia tenetur dolorem! Voluptatum nulla ea magnam
+                                        natus voluptas inventore.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="swiper-slide">
+                                <div class="client-box">
+                                    <div class="client-profile">
+                                        <img src="images/001.png" alt="client" />
+                                        <div class="profile-text">
+                                            <strong>Joseph Sichula</strong>
+                                            <span>Client</span>
+                                        </div>
+                                    </div>
+                                    <div class="rating">
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                    </div>
+                                    <p>
+                                        Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                                        Ipsum eveniet in odio facere vero. Ratione nulla et facilis
+                                        quod maiores quia tenetur dolorem! Voluptatum nulla ea magnam
+                                        natus voluptas inventore.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-pagination"></div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="articles" class="section-container">
+                <h2 class="section-title">Jewelry Journal</h2>
+                <div class="articles-grid">
+                    <article class="article-card">
+                        <img src="images/001.png" alt="The History of Diamond Cutting" loading="lazy" />
+                        <div class="article-content">
+                            <h3>The History of Diamond Cutting</h3>
+                            <p>
+                                Explore the fascinating journey of diamond cutting techniques
+                                from ancient times to modern precision...
+                            </p>
+                            <a href="#" class="read-more">Read More</a>
+                        </div>
+                    </article>
+                    <article class="article-card">
+                        <img src="images/013.png" alt="Caring for Your Fine Jewelry" loading="lazy" />
+                        <div class="article-content">
+                            <h3>Caring for Your Fine Jewelry</h3>
+                            <p>
+                                Learn expert tips on how to maintain the sparkle and integrity
+                                of your precious jewelry pieces...
+                            </p>
+                            <a href="#" class="read-more">Read More</a>
+                        </div>
+                    </article>
+                    <article class="article-card">
+                        <img src="images/012.png" alt="Emerging Trends in Jewelry Design" loading="lazy" />
+                        <div class="article-content">
+                            <h3>Emerging Trends in Jewelry Design</h3>
+                            <p>
+                                Discover the latest trends shaping the world of jewelry
+                                design, from sustainable materials to innovative forms...
+                            </p>
+                            <a href="#" class="read-more">Read More</a>
+                        </div>
+                    </article>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>About Us</h3>
+                <p>
+                    Deaujo Gems is your destination for fine jewelry and exquisite
+                    timepieces.
+                </p>
+                <p>
+                    Come and get your precious gems and jewelry that is durable and
+                    lasts long. All our customers trust us due to our high quality
+                    items.
+                </p>
+            </div>
+            <!---->
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#shop">Shop</a></li>
+                    <li><a href="#catalogue">Catalogue</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="#articles">Article</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <p>Email: info@deaujogems.com</p>
+                <p>Phone: (+260) 974-421451</p>
+                <p>Lusaka, Zambia.</p>
+            </div>
+        </div>
+        <div class="social-icons">
+            <a href="https://www.facebook.com/Deaujo24?mibextid=ZbWKwL"><i class="fab fa-facebook"></i></a>
+            <a href="https://www.instagram.com/deaujo_jewellery?igsh=MTBmNGlsaXFnYWtubg=="><i
+                    class="fab fa-instagram"></i></a>
+            <a href="https://www.tiktok.com/@deaujo_jewellery"><i class="fab fa-tiktok"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+        </div>
+    </footer>
+
+    <div id="product-popup" class="popup">
+        <div class="popup-content">
+            <button class="close-popup">&times;</button>
+            <div class="product-popup-content">
+                <div class="product-carousel">
+                    <div class="carousel-container"></div>
+                    <div class="carousel-controls">
+                        <button class="prev-btn">&lt;</button>
+                        <button class="next-btn">&gt;</button>
+                    </div>
+                    <div class="carousel-pagination"></div>
+                </div>
+                <div class="product-info">
+                    <h2 id="popup-product-name"></h2>
+                    <div id="popup-product-rating"></div>
+                    <p id="popup-product-price"></p>
+                    <p id="popup-product-availability"></p>
+                    <div class="product-buttons">
+                        <button id="specifications-btn">Specifications</button>
+                        <button id="about-btn">About</button>
+                        <button id="reviews-btn">Reviews</button>
+                    </div>
+                    <div id="product-details"></div>
+                    <div class="quantity-control">
+                        <button class="quantity-btn" id="decrease-quantity">-</button>
+                        <input type="number" id="quantity-input" class="quantity-input" value="1" min="1" />
+                        <button class="quantity-btn" id="increase-quantity">+</button>
+                    </div>
+                    <div class="product-buttons">
+                        <button id="buy-now-btn">Buy Now</button>
+                        <button id="add-to-cart-btn">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="cart-popup" class="cart-popup">
+        <h2>Your Cart</h2>
+        <button class="close-cart">&times;</button>
+        <div id="cart-items"></div>
+        <button id="checkout-btn">Checkout</button>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.3/howler.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+        const menuToggle = document.getElementById("hamburger");
+        const popupMenu = document.getElementById("popup-menu");
+
+        function toggleMenu() {
+            popupMenu.classList.toggle("show");
+        }
+
+        menuToggle.addEventListener("click", toggleMenu);
+
+        document.addEventListener("click", (event) => {
+            if (!popupMenu.contains(event.target) && event.target !== menuToggle) {
+                popupMenu.classList.remove("show");
+            }
+        });
+
+        document.querySelectorAll(".nav-list a").forEach((link) => {
+            link.addEventListener("click", (e) => {
+                e.preventDefault();
+                const targetId = link.getAttribute("href");
+                const targetSection = document.querySelector(targetId);
+                popupMenu.classList.remove("show");
+                targetSection.scrollIntoView({ behavior: "smooth" });
+            });
+        });
+
+
+        function getStarRating(rating) {
+            const fullStars = Math.floor(rating);
+            const halfStar = rating % 1 >= 0.5 ? 1 : 0;
+            const emptyStars = 5 - fullStars - halfStar;
+
+            return `
+                ${'<i class="fas fa-star"></i>'.repeat(fullStars)}
+                ${halfStar ? '<i class="fas fa-star-half-alt"></i>' : ""}
+                ${'<i class="far fa-star"></i>'.repeat(emptyStars)}
+            `;
+        }
+
+        function setupProductCarousel(carouselElement) {
+            const container = carouselElement.querySelector(".carousel-container");
+            const prevBtn = carouselElement.querySelector(".prev-btn");
+            const nextBtn = carouselElement.querySelector(".next-btn");
+            const pagination = carouselElement.querySelector(
+                ".carousel-pagination"
+            );
+
+            let currentIndex = 0;
+
+            function updateCarousel() {
+                const items = container.children;
+                const itemWidth = items[0].offsetWidth;
+                container.style.transform = `translateX(-${currentIndex * itemWidth
+                    }px)`;
+
+                // Update pagination
+                Array.from(pagination.children).forEach((dot, index) => {
+                    dot.classList.toggle("active", index === currentIndex);
+                });
+            }
+
+            prevBtn.addEventListener("click", () => {
+                if (currentIndex > 0) {
+                    currentIndex--;
+                    updateCarousel();
+                }
+            });
+
+            nextBtn.addEventListener("click", () => {
+                if (currentIndex < container.children.length - 1) {
+                    currentIndex++;
+                    updateCarousel();
+                }
+            });
+
+            // Create pagination dots
+            Array.from(container.children).forEach((_, index) => {
+                const dot = document.createElement("div");
+                dot.classList.add("pagination-dot");
+                if (index === 0) dot.classList.add("active");
+                pagination.appendChild(dot);
+
+                dot.addEventListener("click", () => {
+                    currentIndex = index;
+                    updateCarousel();
+                });
+            });
+
+            updateCarousel();
+        }
+        // Product Tabs
+        function setupProductTabs(popupContent, product) {
+            const tabButtons = popupContent.querySelectorAll(
+                ".product-buttons button"
+            );
+            const detailsContainer = popupContent.querySelector("#product-details");
+
+            tabButtons.forEach((button) => {
+                button.addEventListener("click", () => {
+                    tabButtons.forEach((btn) => btn.classList.remove("active"));
+                    button.classList.add("active");
+
+                    switch (button.id) {
+                        case "specifications-btn":
+                            detailsContainer.innerHTML = `<p>Material: ${product.material}</p>`;
+                            break;
+                        case "about-btn":
+                            detailsContainer.innerHTML = `<p>About this ${product.name}...</p>`;
+                            break;
+                        case "reviews-btn":
+                            detailsContainer.innerHTML = `<p>Customer reviews for ${product.name}...</p>`;
+                            break;
+                    }
+                });
+            });
+
+            // Activate the first tab by default
+            tabButtons[0].click();
+        }
+
+        function setupQuantityControl(popupContent) {
+            const decreaseBtn = popupContent.querySelector("#decrease-quantity");
+            const increaseBtn = popupContent.querySelector("#increase-quantity");
+            const quantityInput = popupContent.querySelector("#quantity-input");
+
+            decreaseBtn.addEventListener("click", () => {
+                if (quantityInput.value > 1) {
+                    quantityInput.value = parseInt(quantityInput.value) - 1;
+                }
+            });
+
+            increaseBtn.addEventListener("click", () => {
+                quantityInput.value = parseInt(quantityInput.value) + 1;
+            });
+
+            quantityInput.addEventListener("change", () => {
+                if (quantityInput.value < 1) {
+                    quantityInput.value = 1;
+                }
+            });
+        }
+        function toggleMenu() {
+            popupMenu.classList.toggle("show");
+        }
+
+        menuToggle.addEventListener("click", toggleMenu);
+
+        document.addEventListener("click", (event) => {
+            if (!popupMenu.contains(event.target) && event.target !== menuToggle) {
+                popupMenu.classList.remove("show");
+            }
+        });
+
+        document.querySelectorAll(".nav-list a").forEach((link) => {
+            link.addEventListener("click", (e) => {
+                e.preventDefault();
+                const targetId = link.getAttribute("href");
+                const targetSection = document.querySelector(targetId);
+                popupMenu.classList.remove("show");
+                targetSection.scrollIntoView({ behavior: "smooth" });
+            });
+        });
+
+        // Product data (replace with your actual product data)
+        const products = [
+            {
+                id: 1,
+                name: "Diamond Necklace",
+                price: 999.99,
+                image: "./images/001.png",
+                category: "necklaces",
+                gender: "female",
+                material: "Gold",
+                images: ["./images/001.png", "./images/002.png", "./images/003.png"],
+                video: "./images/reel1.mp4",
+            },
+            {
+                id: 2,
+                name: "Chrome Plated Ring",
+                price: 1599.99,
+                image: "./images/004.png",
+                category: "rings",
+                gender: "female",
+                material: "Platinum",
+                images: ["./images/001.png", "./images/002.png", "./images/003.png"],
+                video: "./images/reel5.mp4",
+            },
+            {
+                id: 3,
+                name: "Gold Earrings",
+                price: 299.99,
+                image: "./images/002.png",
+                category: "earrings",
+                gender: "female",
+                material: "Gold",
+                images: ["./images/001.png", "./images/002.png", "./images/003.png"],
+                video: "./images/reel2.mp4",
+            },
+            {
+                id: 4,
+                name: "Silver Bracelet",
+                price: 149.99,
+                image: "./images/003.png",
+                category: "bracelets",
+                gender: "male",
+                material: "Silver",
+                images: ["./images/001.png", "./images/002.png", "./images/003.png"],
+                video: "./images/reel3.mp4",
+            },
+            {
+                id: 5,
+                name: "Platinum Ring",
+                price: 599.99,
+                image: "./images/004.png",
+                category: "rings",
+                gender: "female",
+                material: "Platinum",
+                images: ["./images/001.png", "./images/002.png", "./images/003.png"],
+                video: "./images/reel4.mp4",
+            },
+            {
+                id: 6,
+                name: "Platinum Ring",
+                price: 599.99,
+                image: "./images/004.png",
+                category: "rings",
+                gender: "male",
+                material: "Platinum",
+                images: ["./images/001.png", "./images/002.png", "./images/003.png"],
+                video: "./images/reel5.mp4",
+            },
+            {
+                id: 7,
+                name: "Platinum Watch",
+                price: 599.99,
+                image: "./images/004.png",
+                category: "watches",
+                gender: "male",
+                material: "Platinum",
+                images: ["./images/001.png", "./images/002.png", "./images/003.png"],
+                video: "./images/reel5.mp4",
+            },
+            {
+                id: 8,
+                name: "Snow White Wedding Dress",
+                price: 599.99,
+                image: "./images/004.png",
+                category: "wedding-dresses",
+                gender: "male",
+                material: "Platinum",
+                images: ["./images/001.png", "./images/002.png", "./images/003.png"],
+                video: "./images/reel5.mp4",
+            },
+
+            // Add more products as needed
+        ];
+
+
+        // Function to create a product card
+        function createProductCard(product) {
+            const card = document.createElement("div");
+            card.className = "product-card";
+            card.innerHTML = `
+            <img src="${product.image}" alt="${product.name}" class="product-image">
+            <div class="product-info">
+                <h3 class="product-name">${product.name}</h3>
+                <p class="product-price">K${product.price.toFixed(2)}</p>
+                <p class="product-material">${product.material}</p>
+                <button class="view-button" data-product-id="${product.id}">View</button>
+            </div>
+        `;
+            return card;
+        }
+
+        // Function to populate a carousel with products
+        function populateCarousel(carouselId, products) {
+            const carousel = document.getElementById(carouselId);
+            const container = carousel.querySelector(".carousel-container");
+            const pagination = carousel.querySelector(".carousel-pagination");
+
+            container.innerHTML = "";
+            pagination.innerHTML = "";
+
+            products.forEach((product, index) => {
+                const card = createProductCard(product);
+                container.appendChild(card);
+
+                const dot = document.createElement("div");
+                dot.className = "pagination-dot";
+                if (index === 0) dot.classList.add("active");
+                pagination.appendChild(dot);
+            });
+
+            // Add event listeners for carousel controls
+            const prevBtn = carousel.querySelector(".prev-btn");
+            const nextBtn = carousel.querySelector(".next-btn");
+            let currentIndex = 0;
+
+            prevBtn.addEventListener("click", () => {
+                if (currentIndex > 0) {
+                    currentIndex--;
+                    updateCarousel();
+                }
+            });
+
+            nextBtn.addEventListener("click", () => {
+                if (currentIndex < products.length - 1) {
+                    currentIndex++;
+                    updateCarousel();
+                }
+            });
+
+            function updateCarousel() {
+                const offset = currentIndex * -320; // Assuming each card is 300px wide + 20px margin
+                container.style.transform = `translateX(${offset}px)`;
+                updatePagination();
+            }
+
+            function updatePagination() {
+                const dots = pagination.querySelectorAll(".pagination-dot");
+                dots.forEach((dot, index) => {
+                    dot.classList.toggle("active", index === currentIndex);
+                });
+            }
+        }
+
+        // Populate carousels
+        populateCarousel("main-carousel", products);
+        populateCarousel("second-carousel", products.slice(0, 5)); // Example: show first 5 products
+        populateCarousel("third-carousel", products.slice(3)); // Example: show remaining products
+
+        // Category and gender filtering
+        const categoryButtons = document.querySelectorAll(".category-button");
+        const genderButtons = document.querySelectorAll(".gender-button");
+
+        function filterProducts() {
+            const selectedCategory = document.querySelector(
+                ".category-button.active"
+            ).dataset.category;
+            const selectedGender = document.querySelector(".gender-button.active")
+                .dataset.gender;
+
+            const filteredProducts = products.filter((product) => {
+                return (
+                    (selectedCategory === "all" ||
+                        product.category === selectedCategory) &&
+                    (selectedGender === "all" || product.gender === selectedGender)
+                );
+            });
+
+            populateCarousel("main-carousel", filteredProducts);
+        }
+
+        categoryButtons.forEach((button) => {
+            button.addEventListener("click", () => {
+                categoryButtons.forEach((btn) => btn.classList.remove("active"));
+                button.classList.add("active");
+                filterProducts();
+            });
+        });
+
+        genderButtons.forEach((button) => {
+            button.addEventListener("click", () => {
+                genderButtons.forEach((btn) => btn.classList.remove("active"));
+                button.classList.add("active");
+                filterProducts();
+            });
+        });
+
+        // Product popup functionality
+        const productPopup = document.getElementById("product-popup");
+        const closePopup = document.querySelector(".close-popup");
+        const closeCart = document.querySelector(".close-cart");
+        const cartPopup = document.getElementById("cart-popup");
+        const cartBtn = document.getElementById("cart-btn");
+        const cartItems = document.getElementById("cart-items");
+        const checkoutBtn = document.getElementById("checkout-btn");
+
+        let cart = [];
+
+        //================================================================
+        document.addEventListener("click", (e) => {
+            if (e.target.classList.contains("view-button")) {
+                const productId = e.target.dataset.productId;
+                const product = products.find((p) => p.id === parseInt(productId));
+                if (product) {
+                    showProductPopup(product);
+                }
+            }
+        });
+
+        function showProductPopup(product) {
+            const popupContent = document.querySelector(".product-popup-content");
+            popupContent.innerHTML = `
+                <div class="product-carousel">
+                    <div class="carousel-container">
+                        ${product.images
+                    .map(
+                        (img) => `<img src="${img}" alt="${product.name}">`
+                    )
+                    .join("")}
+                        ${product.video
+                    ? `<video src="${product.video}" controls></video>`
+                    : ""
+                }
+                    </div>
+                    <div class="carousel-controls">
+                        <button class="prev-btn">&lt;</button>
+                        <button class="next-btn">&gt;</button>
+                    </div>
+                    <div class="carousel-pagination"></div>
+                </div>
+                <div class="product-info">
+                    <h2>${product.name}</h2>
+                    <div class="product-rating">
+                        ${getStarRating(
+                    4.5
+                )} <!-- Replace with actual rating -->
+                    </div>
+                    <p class="product-price">$${product.price.toFixed(2)}</p>
+                    <p class="product-availability">In Stock</p>
+                    <div class="product-buttons">
+                        <button id="specifications-btn">Specifications</button>
+                        <button id="about-btn">About</button>
+                        <button id="reviews-btn">Reviews</button>
+                    </div>
+                    <div id="product-details"></div>
+                    <div class="quantity-control">
+                        <button class="quantity-btn" id="decrease-quantity">-</button>
+                        <input type="number" id="quantity-input" class="quantity-input" value="1" min="1">
+                        <button class="quantity-btn" id="increase-quantity">+</button>
+                    </div>
+                    <div class="product-buttons">
+                        <button id="buy-now-btn">Buy Now</button>
+                        <button id="add-to-cart-btn">Add to Cart</button>
+                        <button id="pre-order-btn">Pre-Order</button>
+                    </div>
+                </div>
+            `;
+
+            setupProductCarousel(popupContent.querySelector(".product-carousel"));
+            setupProductTabs(popupContent, product);
+            setupQuantityControl(popupContent);
+            setupAddToCart(popupContent, product);
+
+            productPopup.style.display = "block";
+        }
+
+        function getStarRating(rating) {
+            const fullStars = Math.floor(rating);
+            const halfStar = rating % 1 >= 0.5 ? 1 : 0;
+            const emptyStars = 5 - fullStars - halfStar;
+
+            return `
+                ${'<i class="fas fa-star"></i>'.repeat(fullStars)}
+                ${halfStar ? '<i class="fas fa-star-half-alt"></i>' : ""}
+                ${'<i class="far fa-star"></i>'.repeat(emptyStars)}
+            `;
+        }
+
+        function setupProductCarousel(carouselElement) {
+            const container = carouselElement.querySelector(".carousel-container");
+            const prevBtn = carouselElement.querySelector(".prev-btn");
+            const nextBtn = carouselElement.querySelector(".next-btn");
+            const pagination = carouselElement.querySelector(
+                ".carousel-pagination"
+            );
+
+            let currentIndex = 0;
+
+            function updateCarousel() {
+                const items = container.children;
+                const itemWidth = items[0].offsetWidth;
+                container.style.transform = `translateX(-${currentIndex * itemWidth
+                    }px)`;
+
+                // Update pagination
+                Array.from(pagination.children).forEach((dot, index) => {
+                    dot.classList.toggle("active", index === currentIndex);
+                });
+            }
+
+            prevBtn.addEventListener("click", () => {
+                if (currentIndex > 0) {
+                    currentIndex--;
+                    updateCarousel();
+                }
+            });
+
+            nextBtn.addEventListener("click", () => {
+                if (currentIndex < container.children.length - 1) {
+                    currentIndex++;
+                    updateCarousel();
+                }
+            });
+
+            // Create pagination dots
+            Array.from(container.children).forEach((_, index) => {
+                const dot = document.createElement("div");
+                dot.classList.add("pagination-dot");
+                if (index === 0) dot.classList.add("active");
+                pagination.appendChild(dot);
+
+                dot.addEventListener("click", () => {
+                    currentIndex = index;
+                    updateCarousel();
+                });
+            });
+
+            updateCarousel();
+        }
+
+        function setupProductTabs(popupContent, product) {
+            const tabButtons = popupContent.querySelectorAll(
+                ".product-buttons button"
+            );
+            const detailsContainer = popupContent.querySelector("#product-details");
+
+            tabButtons.forEach((button) => {
+                button.addEventListener("click", () => {
+                    tabButtons.forEach((btn) => btn.classList.remove("active"));
+                    button.classList.add("active");
+
+                    switch (button.id) {
+                        case "specifications-btn":
+                            detailsContainer.innerHTML = `<p>Material: ${product.material}</p>`;
+                            break;
+                        case "about-btn":
+                            detailsContainer.innerHTML = `<p>About this ${product.name}...</p>`;
+                            break;
+                        case "reviews-btn":
+                            detailsContainer.innerHTML = `<p>Customer reviews for ${product.name}...</p>`;
+                            break;
+                    }
+                });
+            });
+
+            // Activate the first tab by default
+            tabButtons[0].click();
+        }
+
+        function setupQuantityControl(popupContent) {
+            const decreaseBtn = popupContent.querySelector("#decrease-quantity");
+            const increaseBtn = popupContent.querySelector("#increase-quantity");
+            const quantityInput = popupContent.querySelector("#quantity-input");
+
+            decreaseBtn.addEventListener("click", () => {
+                if (quantityInput.value > 1) {
+                    quantityInput.value = parseInt(quantityInput.value) - 1;
+                }
+            });
+
+            increaseBtn.addEventListener("click", () => {
+                quantityInput.value = parseInt(quantityInput.value) + 1;
+            });
+
+            quantityInput.addEventListener("change", () => {
+                if (quantityInput.value < 1) {
+                    quantityInput.value = 1;
+                }
+            });
+        }
+
+        function setupAddToCart(popupContent, product) {
+            const addToCartBtn = popupContent.querySelector("#add-to-cart-btn");
+            const quantityInput = popupContent.querySelector("#quantity-input");
+
+            addToCartBtn.addEventListener("click", () => {
+                const quantity = parseInt(quantityInput.value);
+                addToCart(product, quantity);
+                updateCartDisplay();
+                productPopup.style.display = "none";
+            });
+        }
+
+        function addToCart(product, quantity) {
+            const existingItem = cart.find(
+                (item) => item.product.id === product.id
+            );
+            if (existingItem) {
+                existingItem.quantity += quantity;
+            } else {
+                cart.push({ product, quantity });
+            }
+        }
+        //=======================The Super Duper Cart Display 💪============================//
+        function updateCartDisplay() {
+            cartItems.innerHTML = "";
+            cart.forEach((item) => {
+                const cartItem = document.createElement("div");
+                cartItem.className = "cart-item";
+                cartItem.innerHTML = `
+                    <img src="${item.product.image}" alt="${item.product.name
+                    }" class="cart-item-image">
+                    <div class="cart-item-info">
+                        <h3>${item.product.name}</h3>
+                        <p>K${item.product.price.toFixed(2)} x ${item.quantity
+                    }</p>
+                    </div>
+                    <button class="remove-item" data-product-id="${item.product.id
+                    }">&times;</button>
+                `;
+                cartItems.appendChild(cartItem);
+            });
+
+            //==========================Add event listeners for remove buttons===================
+            const removeButtons = cartItems.querySelectorAll(".remove-item");
+            removeButtons.forEach((button) => {
+                button.addEventListener("click", (e) => {
+                    const productId = parseInt(e.target.dataset.productId);
+                    removeFromCart(productId);
+                    updateCartDisplay();
+                });
+            });
+        }
+
+        function removeFromCart(productId) {
+            cart = cart.filter((item) => item.product.id !== productId);
+        }
+
+        //=================================================================
+        closePopup.addEventListener("click", () => {
+            productPopup.style.display = "none";
+        });
+
+        closeCart.addEventListener("click", () => {
+            //what the fucj is the cart called 😡
+            cartPopup.style.display = "none";
+        });
+
+        window.addEventListener("click", (e) => {
+            if (e.target === productPopup) {
+                productPopup.style.display = "none";
+            }
+        });
+
+        cartBtn.addEventListener("click", () => {
+            cartPopup.style.display =
+                cartPopup.style.display === "block" ? "none" : "block";
+        });
+
+        checkoutBtn.addEventListener("click", () => {
+            // Implement checkout functionality here
+            console.log("Proceeding to checkout");
+            // You can integrate with a payment API here
+        });
+
+        // Initialize with 'All' category and gender selected
+        document
+            .querySelector('.category-button[data-category="all"]')
+            .classList.add("active");
+        document
+            .querySelector('.gender-button[data-gender="all"]')
+            .classList.add("active");
+
+        // Testimonials 
+        var swiper = new Swiper(".mySwiperTestimonials", {
+            slidesPerView: 1,
+            spaceBetween: 10,
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+            },
+            breakpoints: {
+                640: {
+                    slidesPerView: 2,
+                    spaceBetween: 20,
+                },
+                768: {
+                    slidesPerView: 4,
+                    spaceBetween: 20,
+                },
+                1024: {
+                    slidesPerView: 3,
+                    spaceBetween: 20,
+                },
+            },
+        });
+
+        window.addEventListener('scroll', function () {
+            var header = document.querySelector('header');
+            if (window.scrollY > 0) {
+                header.classList.add('header-fix');
+            } else {
+                header.classList.remove('header-fix');
+            }
+        });
+
+    </script>
+</body>
+
+</html>
