@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Creative Academy</title>
+    <!-- Fixed CDN links -->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.min.css" rel="stylesheet">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #222327;
+            --text-color: #ffffff;
+            --main-color: #29fd53;
+            --pop-up-color: #2c3e50;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            background: var(--bg-color);
+            color: var(--text-color);
+        }
+
+        header {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(34, 35, 39, 0.95);
+            padding: 1rem 5%;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            transition: var(--transition);
+        }
+
+        .nav-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            gap: 0.5rem;
+        }
+
+        .logo i {
+            color: var(--main-color);
+            font-size: 1.5rem;
+        }
+
+        .logo span {
+            color: var(--text-color);
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+
+        .navbar {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .navbar a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .navbar a:hover,
+        .navbar a.active {
+            color: var(--main-color);
+        }
+
+        .main {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .main a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .main .user {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--main-color);
+        }
+
+        .main .user i {
+            font-size: 1.2rem;
+        }
+
+        .main a:hover {
+            color: var(--main-color);
+        }
+
+        #menu-icon {
+            display: none;
+            font-size: 1.8rem;
+            cursor: pointer;
+            color: var(--text-color);
+        }
+
+        /* Responsive Breakpoints */
+        @media (max-width: 1200px) {
+            header {
+                padding: 1rem 3%;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .navbar {
+                gap: 1.5rem;
+            }
+            .logo span {
+                font-size: 1.2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            #menu-icon {
+                display: block;
+            }
+
+            .navbar {
+                position: absolute;
+                top: 100%;
+                right: -100%;
+                width: 270px;
+                background: var(--pop-up-color);
+                flex-direction: column;
+                gap: 1rem;
+                padding: 1.5rem;
+                border-radius: 10px;
+                box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+                transition: var(--transition);
+            }
+
+            .navbar.open {
+                right: 2%;
+            }
+
+            .navbar a {
+                display: block;
+                padding: 0.5rem 0;
+            }
+
+            .main {
+                gap: 1rem;
+            }
+
+            .main a {
+                font-size: 0.9rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            header {
+                padding: 0.8rem 1.5%;
+            }
+
+            .logo span {
+                font-size: 1.1rem;
+            }
+
+            .main .user span {
+                display: none;
+            }
+
+            .navbar {
+                width: 250px;
+            }
+        }
+
+        @media (max-width: 350px) {
+            .main a {
+                font-size: 0.8rem;
+            }
+            
+            .logo span {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="nav-container">
+            <a href="index2.html" class="logo">
+                <i class="ri-home-fill"></i>
+                <span>Creative Academy</span>
+            </a>
+
+            <nav class="navbar">
+                <a href="#home" class="active">Home</a>
+                <a href="#courses">Courses</a>
+                <a href="#stats">Stats</a>
+                <a href="#tutors">Tutors</a>
+                <a href="#reviews">Reviews</a>
+                <a href="#faq">FAQ</a>
+                <a href="#contact">Contact</a>
+            </nav>
+
+            <div class="main">
+                <a href="#" class="user">
+                    <i class="ri-user-fill"></i>
+                    <span>Sign In</span>
+                </a>
+                <a href="#">Register</a>
+                <div class="bx bx-menu" id="menu-icon"></div>
+            </div>
+        </div>
+    </header>
+
+    <script>
+        const menuIcon = document.querySelector('#menu-icon');
+        const navbar = document.querySelector('.navbar');
+
+        menuIcon.addEventListener('click', () => {
+            menuIcon.classList.toggle('bx-x');
+            navbar.classList.toggle('open');
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!menuIcon.contains(e.target) && !navbar.contains(e.target)) {
+                menuIcon.classList.remove('bx-x');
+                navbar.classList.remove('open');
+            }
+        });
+
+        // Close menu when window is resized beyond mobile breakpoint
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 768) {
+                menuIcon.classList.remove('bx-x');
+                navbar.classList.remove('open');
+            }
+        });
+    </script>
+</body>
+</html>
