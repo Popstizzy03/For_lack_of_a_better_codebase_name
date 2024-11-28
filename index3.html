@@ -1,0 +1,1258 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Creative Academy</title>
+    <!-- Fixed CDN links -->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.min.css" rel="stylesheet">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <style>
+        :root {
+            --bg-color: #222327;
+            --text-color: #ffffff;
+            --main-color: #29fd53;
+            --secondary-color: greenyellow;
+            --pop-up-color: #2c3e50;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            background: var(--bg-color);
+            color: var(--text-color);
+        }
+
+        header {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(34, 35, 39, 0.95);
+            padding: 1rem 5%;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            transition: var(--transition);
+        }
+
+        .nav-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            gap: 0.5rem;
+        }
+
+        .logo i {
+            color: var(--main-color);
+            font-size: 1.5rem;
+        }
+
+        .logo span {
+            color: var(--text-color);
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+
+        .navbar {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .navbar a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .navbar a:hover,
+        .navbar a.active {
+            color: var(--main-color);
+        }
+
+        .main {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .main a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .main .user {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--main-color);
+        }
+
+        .main .user i {
+            font-size: 1.2rem;
+        }
+
+        .main a:hover {
+            color: var(--main-color);
+        }
+
+        .hero {
+            margin-top: 55px;
+        }
+
+        .hero {
+            color: #fff;
+            background-size: cover;
+            background-position: center;
+            height: 50vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            border-radius: var(--border-radius);
+            align-items: center;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: bolder;
+            margin-bottom: 2px;
+            font-family: var(--font-family);
+        }
+
+        .hero p {
+            font-size: 1.6rem;
+            max-width: 600px;
+            margin-bottom: 2rem;
+        }
+
+        .cta-button {
+            background-color: var(--main-color);
+            color: var(--black-text);
+            padding: 0.8rem 2rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.3s ease;
+            margin-top: 20px;
+        }
+
+        .cta-button:hover {
+            background-color: var(--secondary-color);
+        }
+
+        #menu-icon {
+            display: none;
+            font-size: 1.8rem;
+            cursor: pointer;
+            color: var(--text-color);
+        }
+
+        /* Responsive Breakpoints */
+        @media (max-width: 1200px) {
+            header {
+                padding: 1rem 3%;
+            }
+
+            .hero {
+                margin-top: 90px;
+                margin-bottom: 60px;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .navbar {
+                gap: 1.5rem;
+            }
+
+            .logo span {
+                font-size: 1.2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            #menu-icon {
+                display: block;
+            }
+
+            .navbar {
+                position: absolute;
+                top: 100%;
+                right: -100%;
+                width: 270px;
+                background: var(--pop-up-color);
+                flex-direction: column;
+                gap: 1rem;
+                padding: 1.5rem;
+                border-radius: 10px;
+                box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+                transition: var(--transition);
+            }
+
+            .navbar.open {
+                right: 2%;
+            }
+
+            .navbar a {
+                display: block;
+                padding: 0.5rem 0;
+            }
+
+            .main {
+                gap: 1rem;
+            }
+
+            .main a {
+                font-size: 0.9rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            header {
+                padding: 0.8rem 1.5%;
+            }
+
+            .logo span {
+                font-size: 1.1rem;
+            }
+
+            .main .user span {
+                display: none;
+            }
+
+            .navbar {
+                width: 250px;
+            }
+        }
+
+        @media (max-width: 350px) {
+            .main a {
+                font-size: 0.8rem;
+            }
+
+            .logo span {
+                font-size: 1rem;
+            }
+        }
+
+        .h {
+            margin-top: 25px;
+            width: 80%;
+            margin-right: auto;
+            margin-left: auto;
+            height: 7px;
+            border: 0 none;
+            border-radius: 16px;
+            margin-bottom: 30px;
+            background-color: var(--text-color);
+        }
+
+        /*=============================================*/
+        .courses {
+            background-color: var(--bg-color);
+            padding: 0rem 0rem;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0;
+        }
+
+        .courses h1 {
+            text-align: center;
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 2rem;
+            color: var(--text-color);
+        }
+
+        .carousel {
+            display: flex;
+            gap: 0.5rem;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            scroll-behavior: smooth;
+            padding-bottom: 0.5rem;
+        }
+
+        /* Hide scrollbar but keep functionality */
+        .carousel::-webkit-scrollbar {
+            display: none;
+        }
+
+        .carousel {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        .card {
+            flex: 0 0 360px;
+            border-radius: 1.5rem;
+            overflow: hidden;
+            scroll-snap-align: start;
+        }
+
+        .card:nth-child(odd) {
+            background: linear-gradient(135deg, #fbdf2d, #ef3a7b);
+        }
+
+        .card:nth-child(even) {
+            background: linear-gradient(135deg, #ff70af, #5fa8f5);
+        }
+
+        .video-container {
+            position: relative;
+            height: 192px;
+        }
+
+        .video-container video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .play-button-overlay {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: rgba(0, 0, 0, 0.3);
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .play-button-overlay:hover {
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+
+        .play-button {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .play-button svg {
+            width: 24px;
+            height: 24px;
+            fill: white;
+        }
+
+        .card-content {
+            padding: 1.5rem;
+            color: white;
+        }
+
+        .card-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .card-description {
+            opacity: 0.8;
+            margin-bottom: 1rem;
+        }
+
+        .course-details {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.875rem;
+            opacity: 0.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .detail-item {
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+        }
+
+        .detail-item svg {
+            width: 16px;
+            height: 16px;
+            stroke: currentColor;
+            stroke-width: 2;
+            fill: none;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 0.75rem;
+        }
+
+        .btn {
+            flex: 1;
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 0.5rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .btn-preview {
+            background-color: white;
+            color: #1f2937;
+        }
+
+        .btn-preview:hover {
+            background-color: #f3f4f6;
+        }
+
+        .btn-enroll {
+            background-color: rgba(0, 0, 0, 0.2);
+            color: white;
+        }
+
+        .btn-enroll:hover {
+            background-color: rgba(0, 0, 0, 0.3);
+        }
+
+        .conteudo h1,
+        .section-title {
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+            justify-content: center;
+            margin-bottom: 15px;
+        }
+
+        .video-popup {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            z-index: 1001;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .video-popup.active {
+            display: flex;
+        }
+
+        .video-wrapper {
+            position: relative;
+            width: 80%;
+            max-width: 800px;
+        }
+
+        .close-btn {
+            position: absolute;
+            right: -40px;
+            top: -40px;
+            color: white;
+            font-size: 32px;
+            cursor: pointer;
+            z-index: 1002;
+        }
+
+        #popupVideo {
+            width: 100%;
+            border-radius: 8px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: clamp(2rem, 5vw, 4rem) clamp(0rem, 1vw, 2rem);
+        }
+
+        .title {
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: bold;
+            margin-bottom: clamp(1.5rem, 4vw, 2.5rem);
+            text-align: center;
+            line-height: 1.2;
+        }
+
+        .features {
+            list-style: none;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        .features li {
+            font-size: clamp(1rem, 2.5vw, 1.125rem);
+            margin: 1rem 0;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+        }
+
+        .features li i {
+            color: var(--primary-color);
+            font-size: 1.2em;
+            flex-shrink: 0;
+            margin-top: 0.2em;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: clamp(1rem, 3vw, 2rem);
+            margin-top: clamp(2rem, 6vw, 4rem);
+            padding: 0 1rem;
+        }
+
+        .stat {
+            background-color: var(--pop-up-color);
+            padding: clamp(1.5rem, 4vw, 2rem);
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .stat:hover {
+            transform: translateY(-5px);
+        }
+
+        .stat h2 {
+            color: var(--primary-color);
+            font-size: clamp(1.5rem, 4vw, 2rem);
+            margin-bottom: 0.5rem;
+            line-height: 1.2;
+        }
+
+        .stat .stars {
+            font-size: clamp(1rem, 2.5vw, 1.25rem);
+            gap: 10px;
+        }
+
+        .stat p {
+            font-size: clamp(0.875rem, 2vw, 1rem);
+            opacity: 0.9;
+            letter-spacing: 0.5px;
+        }
+
+        footer {
+            background-color: #000;
+            color: #fff;
+            padding: 2rem;
+            text-align: center;
+            margin-top: 15px;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-section {
+            flex: 1;
+            min-width: 200px;
+            margin-bottom: 1rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 0.5rem;
+            color: var(--main-color);
+        }
+
+        .footer-section ul {
+            list-style-type: none;
+        }
+
+        .footer-section li {
+            margin-bottom: 0.25rem;
+        }
+
+        .footer-section a {
+            color: #fff;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: greenyellow;
+        }
+
+        .social-icons {
+            margin-top: 1rem;
+        }
+
+        .social-icons a {
+            color: #fff;
+            font-size: 1.5rem;
+            margin: 0 0.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            color: greenyellow;
+        }
+
+        @media (max-width: 768px) {
+            .stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .stats {
+                grid-template-columns: 1fr;
+            }
+
+            .features li {
+                align-items: flex-start;
+            }
+        }
+
+        /*=============RATING============*/
+        #clients {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: var(--bg-color);
+            padding: 60px 0px;
+            margin: 40px auto;
+            /*border-top: 1px solid #f3f3f3;
+            border-bottom: 1px solid #f3f3f3;*/
+        }
+
+        .client-heading {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .client-heading h3 {
+            font-size: 1.8rem;
+            color: var(--text-color);
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            text-align: center;
+            padding: 0px 5px;
+        }
+
+        .client-heading p {
+            color: var(--text-color);
+            font-size: 0.8rem;
+        }
+
+        .client-box-container {
+            grid-gap: 20px;
+            width: 90%;
+            margin-top: 40px;
+        }
+        .client-box {
+            background-color: var(--pop-up-color);
+            padding: 30px 20px;
+            border: 1px solid var(--main-color);
+            border-radius: 0px 30px 0px 30px;
+            color: var(--text-color);
+        }
+
+        .client-profile {
+            display: flex;
+            align-items: center;
+        }
+
+        .client-profile img {
+            width: 40px;
+            height: 40px;
+            object-fit: cover;
+            object-position: center;
+            border-radius: 50%;
+        }
+
+        .profile-text {
+            display: flex;
+            flex-direction: column;
+            margin-left: 10px;
+        }
+
+        .profile-text strong {
+            color: var(--text-color);
+            font-size: 1rem;
+            font-weight: 600;
+        }
+
+        .profile-text span {
+            color: var(--main-color);
+            font-weight: 400;
+            font-size: 0.8rem;
+        }
+
+        .rating {
+            display: flex;
+            margin: 10px 0px;
+        }
+
+        .rating i {
+            color: var(--main-color);
+        }
+
+        .rating p {
+            color: var(--text-color);
+            font-size: 0.9rem;
+        }
+
+        .client-box p {
+            color: var(--text-color);
+            font-size: 0.9rem;
+        }
+
+        .section-title,
+        .container p {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center; 
+        }
+
+        .container h2 {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .stat {
+                transition: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="nav-container">
+            <a href="index2.html" class="logo">
+                <i class="ri-home-fill"></i>
+                <span>Creative Academy</span>
+            </a>
+            <nav class="navbar">
+                <a href="#home" class="active">Home</a>
+                <a href="#courses">Courses</a>
+                <a href="#stats">Stats</a>
+                <a href="#tutors">Tutors</a>
+                <a href="#clients">Reviews</a>
+                <a href="#faq">FAQ</a>
+                <a href="#contact">Contact</a>
+            </nav>
+            <div class="main">
+                <a href="#" class="user">
+                    <i class="ri-user-fill"></i>
+                    <span>Sign In</span>
+                </a>
+                <a href="#">Register</a>
+                <div class="bx bx-menu" id="menu-icon"></div>
+            </div>
+        </div>
+    </header>
+    <main>
+        <section class="hero" id="home">
+            <h1>Discover Your Skill Set</h1>
+            <h3>
+                Explore our exquisite collection of fine courses, made with
+                passion and precision from our most qualified trainers.
+            </h3>
+            <a href="#courses" class="cta-button">Browse Courses</a>
+        </section>
+
+        <hr class="h">
+
+        <section class="courses" id="courses">
+            <div class="container">
+                <h1>Browse Courses</h1>
+                <div class="carousel" id="courseCarousel">
+                    <!-- Cards will be inserted here by JavaScript -->
+                </div>
+            </div>
+        </section>
+
+        <hr class="h">
+
+        <section class="stats" id="stats">
+            <div class="container">
+                <h1 class="title">Creative Learning Made Easy</h1>
+                <ul class="features">
+                    <li>
+                        <i class="fas fa-check-circle"></i>
+                        <span>Thousands of creative classes. Beginner to pro.</span>
+                    </li>
+                    <li>
+                        <i class="fas fa-check-circle"></i>
+                        <span>Taught by creative pros and industry icons.</span>
+                    </li>
+                    <li>
+                        <i class="fas fa-check-circle"></i>
+                        <span>Learning Paths to help you achieve your goals.</span>
+                    </li>
+                    <li>
+                        <i class="fas fa-check-circle"></i>
+                        <span>Certificates to celebrate your accomplishments.</span>
+                    </li>
+                </ul>
+                <div class="stats">
+                    <div class="stat">
+                        <h2>25K+</h2>
+                        <p>CLASSES</p>
+                    </div>
+                    <div class="stat">
+                        <h2>600K+</h2>
+                        <p>MEMBERS</p>
+                    </div>
+                    <div class="stat">
+                        <h2>8K+</h2>
+                        <p>TEACHERS</p>
+                    </div>
+                    <div class="stat">
+                        <h2 class="stars">4.8 <i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></h2>
+                        <p>APP STORE RATING</p>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </section>
+
+        <hr class="h">
+
+        <section class="tutors" id="tutors">
+            <div class="section-title">
+                <h3>Tutors and their courses</h3>
+            </div>
+            <div class="conteudo">
+                <div class="carousel">
+                    <article class="card">
+                        <h1>Tutor 1</h1>
+                    </article>
+                    <article class="card">
+                        <h1>Tutor 2</h1>
+                    </article>
+                    <article class="card">
+                        <h1>Tutor 3</h1>
+                    </article>
+                    <article class="card">
+                        <h1>Tutor 4</h1>
+                    </article>
+                    <article class="card">
+                        <h1>Tutor 5</h1>
+                    </article>
+                    <article class="card">
+                        <h1>Tutor 6</h1>
+                    </article>
+                </div>
+            </div>
+        </section>
+        <hr class="h">
+        <section id="clients">
+            <div class="client-heading">
+                <h3>Testimonials</h3>
+                <p>From Our Customers</p>
+            </div>
+
+            <div class="client-box-container">
+                <div class="swiper mySwiperTestimonials">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <div class="client-box">
+                                <div class="client-profile">
+                                    <img src="images/1.jpg" alt="client" />
+                                    <div class="profile-text">
+                                        <strong>Joseph Sichula</strong>
+                                        <span>Student</span>
+                                    </div>
+                                </div>
+                                <div class="rating">
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                </div>
+                                <p>
+                                    Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                                    Ipsum eveniet in odio facere vero. Ratione nulla et facilis
+                                    quod maiores quia tenetur dolorem! Voluptatum nulla ea magnam
+                                    natus voluptas inventore.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="swiper-slide">
+                            <div class="client-box">
+                                <div class="client-profile">
+                                    <img src="images/1.jpg" alt="client" />
+                                    <div class="profile-text">
+                                        <strong>Joseph Sichula</strong>
+                                        <span>Student</span>
+                                    </div>
+                                </div>
+                                <div class="rating">
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                </div>
+                                <p>
+                                    Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                                    Ipsum eveniet in odio facere vero. Ratione nulla et facilis
+                                    quod maiores quia tenetur dolorem! Voluptatum nulla ea magnam
+                                    natus voluptas inventore.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="swiper-slide">
+                            <div class="client-box">
+                                <div class="client-profile">
+                                    <img src="images/1.jpg" alt="client" />
+                                    <div class="profile-text">
+                                        <strong>Joseph Sichula</strong>
+                                        <span>Student</span>
+                                    </div>
+                                </div>
+                                <div class="rating">
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                </div>
+                                <p>
+                                    Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                                    Ipsum eveniet in odio facere vero. Ratione nulla et facilis
+                                    quod maiores quia tenetur dolorem! Voluptatum nulla ea magnam
+                                    natus voluptas inventore.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="swiper-slide">
+                            <div class="client-box">
+                                <div class="client-profile">
+                                    <img src="images/1.jpg" alt="client" />
+                                    <div class="profile-text">
+                                        <strong>Joseph Sichula</strong>
+                                        <span>Another Fucking Student</span>
+                                    </div>
+                                </div>
+                                <div class="rating">
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                    <i class="fa-solid fa-star"></i>
+                                </div>
+                                <p>
+                                    Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                                    Ipsum eveniet in odio facere vero. Ratione nulla et facilis
+                                    quod maiores quia tenetur dolorem! Voluptatum nulla ea magnam
+                                    natus voluptas inventore.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-pagination"></div>
+                </div>
+            </div>
+        </section>
+        <hr class="h">
+        <section class="faq" id="faq">
+            <div class="container">
+                <h1>Frequently Asked Questions</h1>
+                <div class="faq-item">
+                    <h2>What is Creative Academy? <i class="fas fa-chevron-up"></i></h2>
+                    <p>Creative Academy is an online learning community with thousands of classes for creative and
+                        curious people, on topics including illustration, design, photography, video, freelancing, and
+                        more. On Creative Academy, you’ll find inspiration from hands-on classes and teachers at the top
+                        of their creative fields, so you can take the next step in your creative journey.</p>
+                </div>
+                <div class="faq-item">
+                    <h2>What is included in my Creative Academy membership? <i class="fas fa-chevron-down"></i></h2>
+                    <p>Stuff</p>
+                </div>
+                <div class="faq-item">
+                    <h2>What can I learn from Creative Academy? <i class="fas fa-chevron-down"></i></h2>
+                    <p>More Stuff</p>
+                </div>
+            </div>
+        </section>
+        <hr class="h">
+        <footer id="contact">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>About Us</h3>
+                    <p>
+                        Creative Academy is your destination for fine skills and courses
+                        .
+                    </p>
+                    <p>
+                        Come and unlock your precious skills that is valuable for your
+                        career development. All our students trust us due to our high quality
+                        skill training.
+                    </p>
+                </div>
+                <!---->
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#shop">Shop</a></li>
+                        <li><a href="#catalogue">Catalogue</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                        <li><a href="#articles">Article</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact Us</h3>
+                    <p>Email: info@creativeacademy.com</p>
+                    <p>Phone: (+260) 974-421451</p>
+                    <p>Lusaka, Zambia.</p>
+                </div>
+            </div>
+            <div class="social-icons">
+                <a href="https://www.facebook.com"><i class="fab fa-facebook"></i></a>
+                <a href="https://www.instagram.com"><i
+                        class="fab fa-instagram"></i></a>
+                <a href="https://www.tiktok.com"><i class="fab fa-tiktok"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+            </div>
+        </footer>
+    </main>
+    <div class="video-popup" id="videoPopup">
+        <div class="video-wrapper">
+            <div class="close-btn" id="closePopup">&times;</div>
+            <video id="popupVideo" controls>
+                <source src="" type="video/mp4">
+                Your browser does not support the video element.
+            </video>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.3/howler.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+        const menuIcon = document.querySelector('#menu-icon');
+        const navbar = document.querySelector('.navbar');
+
+        menuIcon.addEventListener('click', () => {
+            menuIcon.classList.toggle('bx-x');
+            navbar.classList.toggle('open');
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!menuIcon.contains(e.target) && !navbar.contains(e.target)) {
+                menuIcon.classList.remove('bx-x');
+                navbar.classList.remove('open');
+            }
+        });
+
+        // Close menu when window is resized beyond mobile breakpoint
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 768) {
+                menuIcon.classList.remove('bx-x');
+                navbar.classList.remove('open');
+            }
+        });
+
+        const courses = [
+            {
+                title: "Graphic Design Fundamentals",
+                description: "Learn Graphic Design fundamentals and advanced techniques",
+                duration: "12 Hours",
+                level: "Beginner",
+                hasCertificate: true,
+                videoPoster: "./images/2.jpg",
+                videoUrl: "./videos/233037_tiny.mp4" // Replace with actual video URLs
+            },
+            {
+                title: "Digital Marketing",
+                description: "Master the art of digital marketing",
+                duration: "15 Hours",
+                level: "Intermediate",
+                videoPoster: "./images/1.jpg",
+                hasCertificate: true,
+                videoUrl: "https://example.com/video2.mp4"
+            },
+            {
+                title: "Graphic Design Fundamentals",
+                description: "Learn Graphic Design fundamentals and advanced techniques",
+                duration: "12 Hours",
+                level: "Beginner",
+                hasCertificate: true,
+                videoPoster: "./images/2.jpg",
+                videoUrl: "./videos/233037_tiny.mp4" // Replace with actual video URLs
+            },
+            {
+                title: "Digital Marketing",
+                description: "Master the art of digital marketing",
+                duration: "15 Hours",
+                level: "Intermediate",
+                videoPoster: "./images/1.jpg",
+                hasCertificate: true,
+                videoUrl: "https://example.com/video2.mp4"
+            },
+            // Add more courses as needed
+        ];
+
+        function createCourseCard(course, index) {
+            return `
+                <article class="card">
+                    <div class="video-container">
+                        <video poster="./images/1.jpg">
+                            <source src="${course.videoUrl}" type="video/mp4">
+                        </video>
+                        <div class="play-button-overlay" data-video-url="${course.videoUrl}">
+                            <div class="play-button">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M8 5v14l11-7z"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">${course.title}</h3>
+                        <p class="card-description">${course.description}</p>
+                        
+                        <div class="course-details">
+                            <span class="detail-item">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                </svg>
+                                ${course.duration}
+                            </span>
+                            <span class="detail-item">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+                                </svg>
+                                ${course.level}
+                            </span>
+                            <span class="detail-item">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M5 13l4 4L19 7" />
+                                </svg>
+                                Certificate
+                            </span>
+                        </div>
+
+                        <div class="button-group">
+                            <button class="btn btn-preview" data-video-url="${course.videoUrl}">Preview</button>
+                            <button class="btn btn-enroll">Enroll Now</button>
+                        </div>
+                    </div>
+                </article>
+            `;
+        }
+
+        // Initialize carousel and video functionality
+        document.addEventListener('DOMContentLoaded', function () {
+            const carousel = document.getElementById('courseCarousel');
+            const videoPopup = document.getElementById('videoPopup');
+            const popupVideo = document.getElementById('popupVideo');
+            const closePopup = document.getElementById('closePopup');
+
+            // Generate course cards
+            carousel.innerHTML = courses.map(createCourseCard).join('');
+
+            // Handle play button clicks
+            carousel.addEventListener('click', function (e) {
+                const playButton = e.target.closest('.play-button-overlay');
+                const previewButton = e.target.closest('.btn-preview');
+
+                if (playButton || previewButton) {
+                    const videoUrl = (playButton || previewButton).dataset.videoUrl;
+                    popupVideo.querySelector('source').src = videoUrl;
+                    popupVideo.load();
+                    videoPopup.classList.add('active');
+                }
+            });
+
+            // Close popup
+            closePopup.addEventListener('click', function () {
+                videoPopup.classList.remove('active');
+                popupVideo.pause();
+            });
+
+            // Close popup when clicking outside
+            videoPopup.addEventListener('click', function (e) {
+                if (e.target === videoPopup) {
+                    videoPopup.classList.remove('active');
+                    popupVideo.pause();
+                }
+            });
+
+            // Handle enroll button clicks
+            carousel.querySelectorAll('.btn-enroll').forEach(button => {
+                button.addEventListener('click', function () {
+                    alert('Enrollment process will be implemented here');
+                });
+            });
+        });
+
+        // Testimonials
+        var swiper = new Swiper(".mySwiperTestimonials", {
+            slidesPerView: 1,
+            spaceBetween: 10,
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+            },
+            breakpoints: {
+                640: {
+                    slidesPerView: 2,
+                    spaceBetween: 20,
+                },
+                768: {
+                    slidesPerView: 4,
+                    spaceBetween: 20,
+                },
+                1024: {
+                    slidesPerView: 3,
+                    spaceBetween: 20,
+                },
+            },
+        });
+    </script>
+</body>
+
+</html>
